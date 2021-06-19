@@ -1,0 +1,16 @@
+## In a cygwin environment, Lua libraries should be linked explicitly.
+
+--- origsrc/lyaml-6.2.7/lukefile	2020-11-28 09:21:15.000000000 +0900
++++ src/lyaml-6.2.7/lukefile
+@@ -21,7 +21,10 @@ defines  = {
+ 
+ external_dependencies   = {
+    YAML  = {
+-      library = {checksymbol='yaml_document_initialize', library='yaml'},
++      library = {
++         {checksymbol='yaml_document_initialize', library='yaml'},
++         {checksymbol='lua_type', library='lua$LUAVERSION'},
++      },
+    },
+ }
+ 
